@@ -69,10 +69,43 @@ fn number_analyzer(){
 
 }
 
+fn guessing_game() {
+    let secret: i32 = 15; 
+    let mut attempts = 0;
+
+    fn check_guess(guess: i32, secret: i32) -> i32 {
+        if guess == secret {
+            0
+        } else if guess > secret {
+            1
+        } else {
+            -1
+        }
+    }
+
+    let mut guess = 10; 
+    loop {
+        attempts += 1;
+        guess += 1; 
+
+        let result = check_guess(guess, secret);
+        if result == 0 {
+            println!("Correct! The secret number is {}.", secret);
+            break;
+        } else if result == 1 {
+            println!("{} is too high.", guess);
+        } else {
+            println!("{} is too low.", guess);
+        }
+    }
+
+    println!("It took {} attempts to guess the secret number.", attempts);
+}
 
 fn main() {
     //temp_converter();
     //number_analyzer();
+    guessing_game();
 }
 
 
